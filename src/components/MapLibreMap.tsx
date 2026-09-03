@@ -64,12 +64,12 @@ export const MapLibreMap = () => {
   );
 };
 
-function MapFlyTo({ lngLat }: { lngLat: LngLat }) {
+function MapFlyTo({ lng, lat }: { lng: number; lat: number }) {
   const map = useMap();
 
   useEffect(() => {
-    map.flyTo({ center: [lngLat.lng, lngLat.lat], zoom: 20, speed: 10 });
-  }, [lngLat, map]);
+    map.flyTo({ center: [lng, lat], zoom: 20, speed: 10 });
+  }, [lng, lat, map]);
 
   return null;
 }

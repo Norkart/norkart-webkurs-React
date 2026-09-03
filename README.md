@@ -121,9 +121,8 @@ Deretter: la kartet "fly til" valgt adresse ved å bruke `address`-staten sammen
 >
    {address && (
       <MapFlyTo
-         lngLat={
-         new LngLat(address.PayLoad.Posisjon.X, address.PayLoad.Posisjon.Y)
-         }
+         lng={address.PayLoad.Posisjon.X}
+         lat={address.PayLoad.Posisjon.Y}
       />
    )}
 </RMap>
