@@ -1,4 +1,8 @@
-import { LngLat, type MapLayerMouseEvent } from 'maplibre-gl';
+import {
+  LngLat,
+  type MapLayerMouseEvent,
+  type RequestTransformFunction,
+} from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RMap, useMap } from 'maplibre-react-components';
 import { getHoydeFromPunkt } from '../api/getHoydeFromPunkt';
@@ -7,6 +11,21 @@ import { Overlay } from './Overlay';
 import DrawComponent from './DrawComponent';
 
 const TRONDHEIM_COORDS: [number, number] = [10.40565401, 63.4156575];
+
+const KVP_BASE_URL = 'https://kvp.maps.norkart.no/mvt/';
+
+// Norkart-stiler (prøv gjerne forskjellige): 
+// - standard
+// - standard-without-text
+// - greyscale
+// - greyscale-without-text
+// - darkmode
+// - transparent
+// - hybrid
+// - ortofoto
+const NORKART_BASEMAP_VARIANT = 'standard';
+
+const NORKART_BASEMAP_STYLE = `${KVP_BASE_URL}norkart-basemap/${NORKART_BASEMAP_VARIANT}/style.json`;
 
 export const MapLibreMap = () => {
   const [pointHoyde, setPointHoydeAtPunkt] = useState<number | undefined>(
@@ -29,7 +48,8 @@ export const MapLibreMap = () => {
       minZoom={6}
       initialCenter={TRONDHEIM_COORDS}
       initialZoom={12}
-      mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"
+      mapStyle={NORKART_BASEMAP_STYLE}
+      initialTransformRequest={transformRequest}
       style={{
         height: `calc(100dvh - var(--header-height))`,
       }}
@@ -53,3 +73,13 @@ function MapFlyTo({ lngLat }: { lngLat: LngLat }) {
 
   return null;
 }
+
+const transformRequest: RequestTransformFunction = (url) => {
+  if (!url.startsWith(KVP_BASE_URL)) {
+    return { url };
+  }
+
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const separator = url.includes('?') ? '&' : '?';
+  return { url: `${url}${separator}api_key=${encodeURIComponent(apiKey)}` };
+};
