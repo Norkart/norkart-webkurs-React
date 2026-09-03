@@ -211,7 +211,86 @@ Bruk funksjonen i `onMapClick` i [MapLibreMap.tsx](/src/components/MapLibreMap.t
 
 Har du implementert [getBygningAtPunkt](/src/api/getBygningAtPunkt.ts) ([Oppgave 4](#oppgave-4-vis-bygninger-i-kartet))? Bruk bygningsnummeret til å implementere [getTakflateDataForBygning](/src/api/getTakflateDataForBygning.ts) og hent solmengde for alle tak på bygningen — vis dem i kartet og som total solmengde over året.
 
-### Oppgave 6: Gjør noe med andre, åpne geografiske data
+### Oppgave 6: Planlegg en rute mellom to punkter
+
+Implementer [getRuteMellomPunkter.ts](/src/api/getRuteMellomPunkter.ts) (se filen for instruksjoner) for å hente en kjørerute mellom to punkter fra Norkarts ruteplanlegger. Bruk den deretter i [MapLibreMap.tsx](/src/components/MapLibreMap.tsx):
+
+1. Legg til importene:
+
+   ```
+   import { getRuteMellomPunkter } from '../api/getRuteMellomPunkter';
+   import type { GeoJSON } from 'geojson';
+   ```
+
+2. Ny state for start-punkt og rute:
+
+   ```
+   const [startPunkt, setStartPunkt] = useState<LngLat | undefined>(undefined);
+   const [rute, setRute] = useState<GeoJSON | undefined>(undefined);
+   ```
+
+3. La første klikk i kartet sette startpunktet, og andre klikk hente ruten dit:
+
+   ```
+   const onMapClick = async (e: MapLayerMouseEvent) => {
+      if (!startPunkt) {
+         setStartPunkt(e.lngLat);
+         return;
+      }
+
+      const ruteRespons = await getRuteMellomPunkter(
+         startPunkt.lng,
+         startPunkt.lat,
+         e.lngLat.lng,
+         e.lngLat.lat
+      );
+      if (ruteRespons?.RouteGeometry) {
+         setRute(ruteRespons.RouteGeometry);
+      }
+      setStartPunkt(undefined);
+   };
+   ```
+
+4. Legg til en linje-stil (fritt å redigere):
+
+   ```
+   const lineStyle = {
+      "line-color": "#1a73e8",
+      "line-width": 4,
+   };
+   ```
+
+5. Oppdater MapLibre-importen:
+
+   ```
+   import { RLayer, RMap, RSource, useMap } from 'maplibre-react-components';
+   ```
+
+6. Vis ruten når `rute` er satt:
+
+   ```
+   <RMap
+      ...
+   >
+         {rute &&
+            <>
+               <RSource id="rute" type="geojson" data={rute} />
+               <RLayer
+                  source="rute"
+                  id="rute-line"
+                  type="line"
+                  paint={lineStyle}
+               />
+            </>
+         }
+   </RMap>
+   ```
+
+#### Ekstraoppgave
+
+- API-et returnerer også kostnader for ruten (`CostList`), f.eks. reisetid — vis dem med en [RPopup](https://maplibre-react-components.pentatrion.com/components/rpopup) eller et [MUI Card](https://mui.com/material-ui/react-card/).
+
+### Oppgave 7: Gjør noe med andre, åpne geografiske data
 
 Eksempler:
 
