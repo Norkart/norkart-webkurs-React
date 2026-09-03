@@ -61,6 +61,8 @@ Kan gjøres i valgfri rekkefølge (unntatt noen ekstraoppgaver som bygger på ti
 Følg [Maplibre sin tutorial](https://maplibre-react-components.pentatrion.com/tutorial) for å legge til flere funksjoner i appen.
 _ℹ️ Vi bruker TypeScript, ikke JavaScript — tilpass koden fra tutorialen deretter. Spør om hjelp ved behov!_
 
+_💡 Tips: Kartet bruker Norkarts egne bakgrunnskart. Prøv gjerne andre stiler ved å endre `NORKART_BASEMAP_VARIANT` i [MapLibreMap.tsx](/src/components/MapLibreMap.tsx) (f.eks. `darkmode` eller `ortofoto`)._
+
 ### Oppgave 2: Vis høyde i kartet basert på punkt
 
 [getHoydeFromPunkt.ts](/src/api/getHoydeFromPunkt.ts) henter høyde for et geografisk punkt. I [MapLibreMap.tsx](/src/components/MapLibreMap.tsx) lagres høyden i staten `pointHoyde` og logges til konsollen ved klikk i kartet. Implementer en visning av denne høyden i applikasjonen.
