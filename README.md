@@ -22,7 +22,7 @@ Før dere starter må dere ha noe programvare installert (installer kun det dere
 1. **Git**. Følg instruksjonene som gjelder for ditt OS her: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git. Sjekk at git er installert ved å kjøre følgende i en terminal:
 
 ```
-   git --version
+git --version
 ```
 
 2. **Github**. Lag deg en bruker her https://github.com/
@@ -32,11 +32,11 @@ Før dere starter må dere ha noe programvare installert (installer kun det dere
 Sjekk at du har fått installert node med npm!
 
 ```
-   node --version
+node --version
 ```
 
 ```
-    npm --version
+npm --version
 ```
 
 4. **En code editor (vs code anbefales)**. https://code.visualstudio.com/download
@@ -51,7 +51,7 @@ Sjekk at du har fått installert node med npm!
 2. I en terminal: Finn fram til fillokasjonen hvor dere vil lagre prosjektet og klon repoet (deres egen versjon av prosjektet som dere nettopp forket):
 
 ```
-   git clone https://github.com/<YOUR_GITHUB_USERNAME>/norkart-webkurs-React.git
+git clone https://github.com/<YOUR_GITHUB_USERNAME>/norkart-webkurs-React.git
 ```
 
 3. Åpne VSCode og åpne prosjektet du nettopp clonet.
@@ -59,7 +59,7 @@ Sjekk at du har fått installert node med npm!
 4. Åpne ny terminal. Installer npm pakkene til prosjektet. De relevante pakkene kan sees i `package.json` filen i prosjektet. Vi bruker for eksempel `maplibre-gl` biblioteket til å vise kart på nettsiden.
 
 ```
-   npm install
+npm install
 ```
 
 5. **API-nøkkel**. I rotmappa av repoet, lag en fil ved navn ".env" og legg inn følgende:
@@ -75,7 +75,7 @@ Bak "=" skal dere legge inn API-nøkkelen dere får tildelt.
 6. Kjør opp prosjektet lokalt:
 
 ```
-   npm run dev
+npm run dev
 ```
 
 Dette bør åpne nettleseren din på http://localhost:5173/.
@@ -92,7 +92,7 @@ Under finner du forskjellige oppgaver som kan gjøres i hvilken som helst rekkef
 
 ---
 
-### OPPGAVE 1: Følg tutorialen til Maplibre og legg til mer kartfunksjonalitet i appen
+### Oppgave 1: Følg tutorialen til Maplibre og legg til mer kartfunksjonalitet i appen
 
 Gjerne ta utgangspunkt i [Maplibre sin tutorial](https://maplibre-react-components.pentatrion.com/tutorial) for å legge til flere funksjoner i appen.
 _ℹ️ Husk at vi bruker TypeScript og ikke JavaScript, så du må kanskje gjøre noen små endringer på koden i tutorialen for at det skal funke. Spør gjerne om hjelp!_
@@ -168,6 +168,8 @@ Når du har fått til dette kan du gå videre til å få kartet til å "fly til"
    )}
 </RMap>
 ```
+
+---
 
 ### Oppgave 4: Vis bygninger i kartet
 
@@ -264,7 +266,9 @@ I tillegg innholder responsen den beregnede solmengden (i kWh/m^2) som treffer t
 
 Dersom du har implementert [getBygningAtPunkt](/src/api/getBygningAtPunkt.ts) (se [oppgave 4](#oppgave-4-vis-bygninger-i-kartet)), kan du benytte bygningsnummeret som returneres fra API-et til å hente solmengde-data for alle takene på en valgt bygning. For å gjøre dette må du implementere [getTakflateDataForBygning](/src/api/getTakflateDataForBygning.ts). Responsen fra dette API-kallet kan brukes både til å vise alle tak i kartet og til å vise total solmengde på alle tak ved forskjellige tider av året.
 
-### OPPGAVE 6: Gjør noe med andre, åpne geografiske data
+---
+
+### Oppgave 6: Gjør noe med andre, åpne geografiske data
 
 Her står du fritt til å bruke andre åpne geografiske data til å utvide appen. Eksempel er:
 
