@@ -14,16 +14,16 @@ const TRONDHEIM_COORDS: [number, number] = [10.40565401, 63.4156575];
 
 const KVP_BASE_URL = 'https://kvp.maps.norkart.no/mvt/';
 
-// Norkart-stiler (prøv gjerne forskjellige): 
-// - standard
-// - standard-without-text
-// - greyscale
-// - greyscale-without-text
-// - darkmode
-// - transparent
-// - hybrid
-// - ortofoto
-const NORKART_BASEMAP_VARIANT = 'standard';
+type NorkartBasemapVariant =
+  | 'standard'
+  | 'standard-without-text'
+  | 'greyscale'
+  | 'greyscale-without-text'
+  | 'darkmode'
+  | 'transparent'
+  | 'hybrid'
+  | 'ortofoto';
+const NORKART_BASEMAP_VARIANT: NorkartBasemapVariant = 'standard';
 
 const NORKART_BASEMAP_STYLE = `${KVP_BASE_URL}norkart-basemap/${NORKART_BASEMAP_VARIANT}/style.json`;
 
