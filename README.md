@@ -11,20 +11,16 @@ Spør gjerne om noe er uklart.
 - [Material UI (MUI)](https://mui.com/material-ui/getting-started/)
 - [MapLibre](https://maplibre-react-components.pentatrion.com/getting-started)
 
----
+## Kom i gang
 
-## STEG 0: Forutsetninger
-
-Installer det du ikke har fra før:
+**Forutsetninger** — installer det du ikke har fra før:
 
 1. **[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)** — sjekk med `git --version`
 2. **[GitHub](https://github.com/)**-bruker
 3. **[Node.js + npm](https://nodejs.org/en/download)** — sjekk med `node --version` og `npm --version`
 4. **Code editor** ([VS Code](https://code.visualstudio.com/download) anbefales)
 
----
-
-## STEG 1: Fork, clone og kjør prosjektet
+**Fork, clone og kjør prosjektet:**
 
 1. Fork dette prosjektet (`fork`-knappen øverst til høyre) med default innstillinger.
 
@@ -56,20 +52,14 @@ Installer det du ikke har fra før:
 
    Åpne http://localhost:5173/.
 
----
+## Oppgaver
 
-## STEG 2: Legg til funksjonalitet
-
-Oppgavene under kan gjøres i valgfri rekkefølge (unntatt noen ekstraoppgaver som bygger på tidligere oppgaver). Komfortabel med React/TypeScript? Gjør gjerne noe helt eget med dataene og verktøyene som er tilgjengelig!
-
----
+Kan gjøres i valgfri rekkefølge (unntatt noen ekstraoppgaver som bygger på tidligere oppgaver). Komfortabel med React/TypeScript? Gjør gjerne noe helt eget med dataene og verktøyene som er tilgjengelig!
 
 ### Oppgave 1: Utvid kartfunksjonaliteten
 
 Følg [Maplibre sin tutorial](https://maplibre-react-components.pentatrion.com/tutorial) for å legge til flere funksjoner i appen.
 _ℹ️ Vi bruker TypeScript, ikke JavaScript — tilpass koden fra tutorialen deretter. Spør om hjelp ved behov!_
-
----
 
 ### Oppgave 2: Vis høyde i kartet basert på punkt
 
@@ -78,8 +68,6 @@ _ℹ️ Vi bruker TypeScript, ikke JavaScript — tilpass koden fra tutorialen d
 Forslag: bruk [RPopup](https://maplibre-react-components.pentatrion.com/components/rpopup), eller lag en egen komponent (f.eks. et MUI [Card](https://mui.com/material-ui/react-card/)) som viser latitude, longitude og høyde.
 
 Hint: latitude/longitude for valgt punkt ligger i staten `clickPoint` — nyttig for RPopup.
-
----
 
 ### Oppgave 3: Implementer søk etter adresse
 
@@ -138,8 +126,6 @@ Deretter: la kartet "fly til" valgt adresse ved å bruke `address`-staten sammen
    )}
 </RMap>
 ```
-
----
 
 ### Oppgave 4: Vis bygninger i kartet
 
@@ -208,13 +194,11 @@ Implementer [getBygningAtPunkt.ts](/src/api/getBygningAtPunkt.ts) (se filen for 
    </RMap>
    ```
 
-#### Ekstraoppgaver:
+#### Ekstraoppgaver
 
 - API-et returnerer også andre bygningsdata — vis dem med en [RPopup](https://maplibre-react-components.pentatrion.com/components/rpopup) eller et [MUI Card](https://mui.com/material-ui/react-card/).
 - Har du implementert adressesøk ([Oppgave 3](#oppgave-3-implementer-søk-etter-adresse))? Bruk posisjonen fra valgt adresse til å hente og vise bygningen der.
 - Implementer [getRosDataForBygning](/src/api/getRosDataForBygning.ts) for å hente Risiko- og sårbarhetsdata (ROS) for en bygning, og vis det i kartet eller med MUI-komponenter.
-
----
 
 ### Oppgave 5: Hent og vis solmengde for tak ved punkt
 
@@ -222,11 +206,9 @@ Implementer [getTakflateDataForPunkt](/src/api/getTakflateDataForPunkt.ts) for �
 
 Bruk funksjonen i `onMapClick` i [MapLibreMap.tsx](/src/components/MapLibreMap.tsx) for å vise takets geometri i kartet (se [Oppgave 4](#oppgave-4-vis-bygninger-i-kartet)) og den beregnede solmengden (kWh/m² per måned), f.eks. med [MUI Table](https://mui.com/material-ui/react-table/).
 
-#### Ekstraoppgave:
+#### Ekstraoppgave
 
 Har du implementert [getBygningAtPunkt](/src/api/getBygningAtPunkt.ts) ([Oppgave 4](#oppgave-4-vis-bygninger-i-kartet))? Bruk bygningsnummeret til å implementere [getTakflateDataForBygning](/src/api/getTakflateDataForBygning.ts) og hent solmengde for alle tak på bygningen — vis dem i kartet og som total solmengde over året.
-
----
 
 ### Oppgave 6: Gjør noe med andre, åpne geografiske data
 
